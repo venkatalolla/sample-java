@@ -18,9 +18,14 @@ node()
     stage('Build Docker Image')
     {
         // Build the Dockerfile
-        sh "docker build -t java-app:latest"        
+        sh "docker build . -t java-app:latest"        
     }
 
+    stage('Docker Push')
+    {
+        // Push the docker image to docker hub
+        sh "docker push java-app:latest"
+    }
     stage('Create Helm Chart')
     {
         // Create a Helm Chart
