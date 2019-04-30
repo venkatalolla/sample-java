@@ -3,7 +3,7 @@ node()
     stage('Checkout')
     {
         // Git check out the sample java application repository
-        git credentialsId: 'GITCREDENTIALS', url: 'https://suryalolla@bitbucket.org/levveldevops/sample-java.git'
+        git changelog: false, credentialsId: 'Github', poll: false, url: 'https://github.com/venkatalolla/sample-java.git'
     }
 
     stage('Build')
