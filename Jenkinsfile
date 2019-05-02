@@ -1,5 +1,6 @@
 node()
 {
+    cleanWs()
     // Global version variable concatinating from VERSION file
     version = sh (script: "cat ${WORKSPACE}/VERSION", returnStdout: true)
 
