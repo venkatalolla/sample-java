@@ -1,14 +1,14 @@
 node()
 {
-    //cleanWs()
-    // Global version variable concatinating from VERSION file
-    version = sh (script: "cat ${WORKSPACE}/VERSION.txt", returnStdout: true)
-
     stage('Checkout')
     {
         // Git check out the sample java application repository
         git changelog: false, credentialsId: 'Github', poll: false, url: 'https://github.com/venkatalolla/sample-java.git'
     }
+
+    //cleanWs()
+    // Global version variable concatinating from VERSION file
+    version = sh (script: "cat ${WORKSPACE}/VERSION", returnStdout: true)
 
     stage('Build')
     {
