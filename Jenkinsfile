@@ -1,7 +1,7 @@
 node()
 {
     // Global version variable concatinating from VERSION file
-    version = sh (script: "cat VERSION", returnStdout: true)
+    version = sh (script: "cat ${WORKSPACE}/VERSION", returnStdout: true)
 
     stage('Checkout')
     {
@@ -31,6 +31,6 @@ node()
     }
     stage('Create Helm Chart')
     {
-        //sh "helm package"
+        //  sh "helm package"
     }
 }
