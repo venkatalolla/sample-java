@@ -50,7 +50,7 @@ node()
             // Helm Chart previous version number in Chart.yaml file
             perviousversion = sh (script: "awk '/version/ {print \$2}' ${WORKSPACE}/helmchart/java-app/Chart.yaml", returnStdout: true)
             if(perviousversion != null) perviousversion = perviousversion.trim();
-            
+
             // Update the previous version number with new version number in Chart.yaml file
             sh "sed -i 's/${perviousversion}/${version}/g' ${WORKSPACE}/helmchart/java-app/Chart.yaml" 
 
@@ -60,7 +60,8 @@ node()
 
         stage('Helm Chart Publish')
         {
-            // Publish Helm Charts to S3 repository
+            // Publish Helm Charts to S3 repository 
+            // AWS S3 for demo or minio for On-Prem S3 or Swift OpenStack (Object Storage)
             sh "helm s3 push java-app-${version}.tgz remote-charts"
         }
     }
