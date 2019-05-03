@@ -45,7 +45,7 @@ node()
         stage('Helm Package')
         {
             // Copy the required values file from source code directory 
-            sh "cp ${WORKDIR}/sourcecode/values.yaml ./helmchart/java-app/"
+            sh "cp ${WORKSPACE}/sourcecode/values.yaml ./helmchart/java-app/"
 
             // Helm Chart previous version number in Chart.yaml file
             perviousversion = sh (script: "awk '/version/ {print \$2}' ./helmchart/java-app/Chart.yaml", returnStdout: true)
