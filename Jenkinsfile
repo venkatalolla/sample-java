@@ -49,7 +49,8 @@ node()
 
             // Helm Chart previous version number in Chart.yaml file
             perviousversion = sh (script: "awk '/version/ {print \$2}' ${WORKSPACE}/helmchart/java-app/Chart.yaml", returnStdout: true)
-
+            if(perviousversion != null) perviousversion = perviousversion.trim();
+            
             // Update the previous version number with new version number in Chart.yaml file
             sh "sed -i 's/${perviousversion}/${version}/g' ${WORKSPACE}/helmchart/java-app/Chart.yaml" 
 
