@@ -48,7 +48,7 @@ node()
             sh "cp ./sourcecode/values.yaml ./helmchart/java-app/"
 
             // Helm Chart previous version number in Chart.yaml file
-            perviousversion = sh (script: "awk '/version/ {print $2}' ./helmchart/java-app/Chart.yaml", returnStdout: true)
+            perviousversion = sh (script: "awk '/version/ {print \$2}' ./helmchart/java-app/Chart.yaml", returnStdout: true)
 
             // Update the previous version number with new version number in Chart.yaml file
             sh "sed -i 's/${perviousversion}/${version}/g' ./helmchart/java-app/Chart.yaml" 
