@@ -5,7 +5,7 @@ node()
     {
         stage('Source Code Checkout')
         { 
-            // Git check out the sample java application repository to sourcecode directory.
+            // Git check out the sample java application repository to sourcecode directory
             git changelog: false, credentialsId: 'Github', poll: false, url: 'https://github.com/venkatalolla/sample-java.git'
         }
 
